@@ -5,7 +5,7 @@ int main(){
 	printf("Enter factorial number:");
 	scanf("%d",&a);
 	int i;
-	int res;
+	int res = 1;
 	for (i = 1; i<=a; i++){
 		res *= i;
 	}
