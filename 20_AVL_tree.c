@@ -19,8 +19,7 @@ int height(struct Node *N) {
 }
 
 struct Node *newNode(int key) {
-  struct Node *node = (struct Node *)
-    malloc(sizeof(struct Node));
+  struct Node *node = (struct Node *)malloc(sizeof(struct Node));
   node->key = key;
   node->left = NULL;
   node->right = NULL;
@@ -31,10 +30,8 @@ struct Node *newNode(int key) {
 struct Node *rightRotate(struct Node *y) {
   struct Node *x = y->left;
   struct Node *T2 = x->right;
-
   x->right = y;
   y->left = T2;
-
   y->height = max(height(y->left), height(y->right)) + 1;
   x->height = max(height(x->left), height(x->right)) + 1;
 
@@ -67,8 +64,7 @@ struct Node *insertNode(struct Node *node, int key) {
   else
     return node;
   
-  node->height = 1 + max(height(node->left),
-               height(node->right));
+  node->height = 1 + max(height(node->left),height(node->right));
   int balance = getBalance(node);
   if (balance > 1 && key < node->left->key)
     return rightRotate(node);
@@ -116,8 +112,7 @@ struct Node *deleteNode(struct Node *root, int key) {
   }
   if (root == NULL)
     return root;
-  root->height = 1 + max(height(root->left),
-               height(root->right));
+  root->height = 1 + max(height(root->left),height(root->right));
   int balance = getBalance(root);
   if (balance > 1 && getBalance(root->left) >= 0)
     return rightRotate(root);
@@ -144,7 +139,6 @@ void printPreOrder(struct Node *root) {
 
 int main() {
   struct Node *root = NULL;
-
   root = insertNode(root, 2);
   root = insertNode(root, 1);
   root = insertNode(root, 7);
@@ -152,13 +146,8 @@ int main() {
   root = insertNode(root, 5);
   root = insertNode(root, 3);
   root = insertNode(root, 8);
-
   printPreOrder(root);
-
   root = deleteNode(root, 3);
-
   printf("\nAfter deletion: ");
   printPreOrder(root);
-
-  return 0;
 }
